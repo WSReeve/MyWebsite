@@ -21,4 +21,3 @@ function colorChanger() {
         item.id = newId;
     }
 }
-(colorChanger());
