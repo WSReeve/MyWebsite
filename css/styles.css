@@ -67,7 +67,6 @@ p {
 div {
     margin-right: 50vw;
     margin-top: 2rem;
-    margin-bottom: 2rem;
 }
 
 h1 {
@@ -76,7 +75,7 @@ h1 {
 
 ul {
     //background-color: #555;
-    margin-top: 10vh;
+    margin-top: 5vh;
     margin-right: 50vw;
 }
 
