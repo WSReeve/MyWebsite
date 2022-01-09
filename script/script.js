@@ -22,14 +22,49 @@ function colorChanger() {
     }
 }
 
-const filenames = [];
-readFilenames();
-async function readFilenames() {
+const dataMat = [];
+
+async function readCSV() {
     const response = await fetch('filenames.csv');
     const data = await response.text();
-    const names = data.split(',');
-    for(const name in names) {
-        filenames.push(name);
-    }
-    console.log(data);
+
+    const table = data.split('\n');
+    table.pop();
+    table.forEach(row => {
+        const columns = row.split(',');
+        dataMat.push(columns);
+    });
+    console.log("read");
+}
+
+async function populatePage() {
+    await readCSV();
+    console.log(dataMat);
+    dataMat.forEach(async month => {
+        const parent = document.querySelector(".portfolio");
+        await createList(month, parent);
+        for (i = 2; i < month.length; i++) {
+            const file = month[i];
+            await createHTML(file,month, parent);
+            console.log('add file here');
+        }
+        console.log('populated');   
+    });
+}
+
+async function createList(row, pElement) {
+    const month = document.createElement("li");
+    const date = row[1] + '/' + row[0];
+    month.innerHTML = date;
+    month.className = 'folder d' + row[0] + '-' + row[1];
+
+    pElement.appendChild(month);
+}
+
+async function createHTML(column, row, pElement) {
+    const image = document.createElement("img");
+    image.className = 'image';
+    image.src = "assets/art/" + row[0] + "/" + row[1] + "/" + column;
+
+    document.querySelector('.d' + row[0] + '-' + row[1]).appendChild(image);
 }

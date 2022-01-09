@@ -2,10 +2,15 @@ import os
 import csv
 
 path = "assets/art"
-dir_list = os.listdir(path)
-
-print(dir_list)
+year_list = os.listdir(path)
 
 with open('filenames.csv', 'w') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=',')
-    filewriter.writerow(dir_list)
+
+    for year in year_list:
+        month_list = os.listdir(path + "/" + year)
+        for month in month_list:
+            file_list = os.listdir(path + "/" + year + "/" + month)
+            filewriter.writerow([year, month] + file_list)
+            print([year, month] + file_list)
+        
