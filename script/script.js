@@ -56,7 +56,7 @@ async function readCSV(csvfile) {
 async function createList(row, pElement) {
     const month = document.createElement("li");
     const date = row[1] + '/' + row[0];
-    month.innerHTML = date;
+    //month.innerHTML = date;
     month.className = 'folder d' + row[0] + '-' + row[1];
 
     pElement.appendChild(month);
@@ -64,17 +64,18 @@ async function createList(row, pElement) {
 
 async function createHTML(csvfile, column, row) {
     const folder = csvfile.split("_", 1);
-    console.log(folder[0]);
     let entry;
     let element;
+    let pname;
     switch(folder[0]) {
         case "art":
             element = document.createElement("img");
             element.src = "assets/art/" + row[0] + "/" + row[1] + "/" + column;
             element.className = 'image';
             break;
+
         case "notes":
-            const pname = column.split(".")
+            pname = column.split(".")
             element = document.createElement("li");
             element.class = "entry";
         
@@ -84,7 +85,26 @@ async function createHTML(csvfile, column, row) {
             entry.className = 'note';
 
             element.appendChild(entry);
-            break
+            break;
+
+        case "photos":
+            element = document.createElement("img");
+            element.src = "assets/photos/" + row[0] + "/" + row[1] + "/" + column;
+            element.className = 'image';
+            break;
+
+        case "music":
+            pname = column.split(".")
+            element = document.createElement("li");
+            element.class = "entry";
+        
+            entry = document.createElement("a");
+            entry.href = "assets/music/" + row[0] + "/" + row[1] + "/" + column;
+            entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + " " + pname[3] + " " + pname[5]
+            entry.className = 'audio';
+
+            element.appendChild(entry);
+            break;
     }
 
     document.querySelector('.d' + row[0] + '-' + row[1]).appendChild(element);

@@ -19,3 +19,5 @@ def read_files(path, csv_name):
 
 read_files("assets/art", 'art_filenames.csv')
 read_files("assets/notes", "notes_filenames.csv")
+read_files("assets/photos", "photos_filenames.csv")
+read_files("assets/music", "music_filenames.csv")
