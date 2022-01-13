@@ -24,8 +24,24 @@ function colorChanger() {
 
 const dataMat = [];
 
-async function readCSV() {
-    const response = await fetch('filenames.csv');
+
+async function populatePage(csvfile) {
+    await readCSV(csvfile);
+    console.log(dataMat);
+    dataMat.forEach(async month => {
+        const parent = document.querySelector("ol");
+        await createList(month, parent);
+        for (i = 2; i < month.length; i++) {
+            const file = month[i];
+            await createHTML(csvfile, file, month);
+            console.log('add file here');
+        }
+        console.log('populated');   
+    });
+}
+
+async function readCSV(csvfile) {
+    const response = await fetch(csvfile);
     const data = await response.text();
 
     const table = data.split('\n');
@@ -37,21 +53,6 @@ async function readCSV() {
     console.log("read");
 }
 
-async function populatePage() {
-    await readCSV();
-    console.log(dataMat);
-    dataMat.forEach(async month => {
-        const parent = document.querySelector(".portfolio");
-        await createList(month, parent);
-        for (i = 2; i < month.length; i++) {
-            const file = month[i];
-            await createHTML(file,month, parent);
-            console.log('add file here');
-        }
-        console.log('populated');   
-    });
-}
-
 async function createList(row, pElement) {
     const month = document.createElement("li");
     const date = row[1] + '/' + row[0];
@@ -61,10 +62,30 @@ async function createList(row, pElement) {
     pElement.appendChild(month);
 }
 
-async function createHTML(column, row, pElement) {
-    const image = document.createElement("img");
-    image.className = 'image';
-    image.src = "assets/art/" + row[0] + "/" + row[1] + "/" + column;
+async function createHTML(csvfile, column, row) {
+    const folder = csvfile.split("_", 1);
+    console.log(folder[0]);
+    let entry;
+    let element;
+    switch(folder[0]) {
+        case "art":
+            element = document.createElement("img");
+            element.src = "assets/art/" + row[0] + "/" + row[1] + "/" + column;
+            element.className = 'image';
+            break;
+        case "notes":
+            const pname = column.split(".")
+            element = document.createElement("li");
+            element.class = "entry";
+        
+            entry = document.createElement("a");
+            entry.href = "assets/notes/" + row[0] + "/" + row[1] + "/" + column;
+            entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + " " + pname[3] + " " + pname[5]
+            entry.className = 'note';
 
-    document.querySelector('.d' + row[0] + '-' + row[1]).appendChild(image);
+            element.appendChild(entry);
+            break
+    }
+
+    document.querySelector('.d' + row[0] + '-' + row[1]).appendChild(element);
 }

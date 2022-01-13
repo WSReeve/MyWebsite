@@ -1,0 +1,51 @@
+/*********************
+    General Styles
+*********************/
+
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html, body, div, h1, h2, h3, p, a, img,
+i, ol, ul, li, label, table, caption,
+footer, header, nav, section {
+    margin: 0; padding: 0;
+}
+
+
+
+html {
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+body {
+    background-color: #fff;
+    height: 100vh;
+}
+
+img {
+    display: block;
+    height: 2rem;
+    width: 2rem;
+}
+
+ul {
+    //background-color: #555;
+    margin-top: 5vh;
+    margin-right: 50vw;
+}
+
+li {
+}
+
+a {
+    padding: 1rem;
+}
+
+a:hover {
+    font-weight: 700;
+}
