@@ -19,7 +19,7 @@ footer, header, nav, section {
 
 html {
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 body {
@@ -33,20 +33,34 @@ img {
     width: 2rem;
 }
 
-ul {
-    //background-color: #555;
-    margin-top: 5vh;
-    margin-right: 50vw;
-}
-
-.folder {
-    
-}
-
-a {
+div {
     padding: 1rem;
 }
 
+h1, h2, h3 {
+    font-size: 1.8rem;
+    
+}
+h1 {
+    color: rgb(112, 112, 128);
+}
+h2 {
+    color: rgb(75, 75, 88)
+}
+
+ol {
+    padding-left: 1rem;
+    list-style: none;
+    
+}
+
+li {
+    font-size: 1.1rem;
+}
+
+a {
+    text-decoration: none;
+}
 a:hover {
-    font-weight: 700;
+    color: rgb(126, 126, 170);
 }

@@ -12,9 +12,9 @@ def read_files(path, csv_name):
             month_list.sort()
             for month in month_list:
                 file_list = os.listdir(path + "/" + year + "/" + month)
-                file_list.sort()
+                file_list.sort(reverse=True)
                 filewriter.writerow([year, month] + file_list)
-                print([year, month] + file_list)
+                #print([year, month] + file_list)
 
 
 read_files("assets/art", 'art_filenames.csv')
