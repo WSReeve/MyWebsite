@@ -81,7 +81,7 @@ async function createHTML(csvfile, column, row) {
         
             entry = document.createElement("a");
             entry.href = "assets/notes/" + row[0] + "/" + row[1] + "/" + column;
-            entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + "" + pname[3] + ": " + pname[5]
+            entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + ":" + pname[5] + "" + pname[3] + ": " + pname[6];
             entry.className = 'note';
 
             element.appendChild(entry);

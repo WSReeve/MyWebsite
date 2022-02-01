@@ -2,6 +2,7 @@ import os
 import csv
 
 def read_files(path, csv_name):
+
     year_list = os.listdir(path)
 
     with open(csv_name, 'w') as csvfile:
