@@ -71,6 +71,11 @@ async function createHTML(csvfile, column, row) {
         case "art":
             element = document.createElement("img");
             element.src = "assets/art/" + row[0] + "/" + row[1] + "/" + column;
+            element.style.maxWidth = "90vw";
+            element.style.maxHeight = "90vh";
+            element.style.width = "auto"; //still not workingggg
+            element.style.height = "90vh";
+            element.loading = "lazy";
             element.className = 'image';
             break;
 
@@ -90,6 +95,7 @@ async function createHTML(csvfile, column, row) {
         case "photos":
             element = document.createElement("img");
             element.src = "assets/photos/" + row[0] + "/" + row[1] + "/" + column;
+            element.loading = "lazy";
             element.className = 'image';
             break;
 

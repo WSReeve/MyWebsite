@@ -31,7 +31,8 @@ body {
 
 img {
     align-self: center;
-    height: min(400px,auto);
+    height: auto;
+    width: auto:;
     max-height: 90vh;
     max-width: 90vw;
     border: black;
