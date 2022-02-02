@@ -30,9 +30,13 @@ body {
 }
 
 img {
-
-    height: 400px;
-    width:auto;
+    align-self: center;
+    height: min(400px,auto);
+    max-height: 90vh;
+    max-width: 90vw;
+    border: black;
+    border-style: solid;
+    border-width: 3px;
 }
 
 
@@ -73,17 +77,15 @@ h1 {
     text-align: center;
 }
 
-ul {
-    //background-color: #555;
+ol, ul {
     margin-top: 5vh;
-    margin-right: 50vw;
 }
+
 
 li {
     text-align: center;
+    align-content: center;
     padding-bottom: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
 }
 
 a:hover {
@@ -107,4 +109,17 @@ a:hover {
 }
 #purple {
     color: rebeccapurple;
+}
+
+/********************
+    Media Queries
+********************/
+
+@media only screen and (min-width: 1000px) {
+
+img {
+    height: auto;
+    max-width: 90vw;
+}
+
 }
