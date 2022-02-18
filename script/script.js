@@ -67,6 +67,7 @@ async function createHTML(csvfile, column, row) {
     let entry;
     let element;
     let pname;
+    let title;
     switch(folder[0]) {
         case "art":
             element = document.createElement("img");
@@ -80,13 +81,14 @@ async function createHTML(csvfile, column, row) {
             break;
 
         case "notes":
-            pname = column.split(".")
+            pname = column.split(".");
+            title = pname[6].replaceAll("-"," ");
             element = document.createElement("li");
             element.class = "entry";
         
             entry = document.createElement("a");
             entry.href = "assets/notes/" + row[0] + "/" + row[1] + "/" + column;
-            entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + ":" + pname[5] + "" + pname[3] + ": " + pname[6];
+            entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + ":" + pname[5] + "" + pname[3] + ": " + title;
             entry.className = 'note';
 
             element.appendChild(entry);
@@ -100,13 +102,15 @@ async function createHTML(csvfile, column, row) {
             break;
 
         case "music":
-            pname = column.split(".")
+            pname = column.split(".");
+            title = pname[6].replaceAll("-"," ");
+
             element = document.createElement("li");
             element.class = "entry";
         
             entry = document.createElement("a");
             entry.href = "assets/music/" + row[0] + "/" + row[1] + "/" + column;
-            entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + " " + pname[3] + " " + pname[5]
+            entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + ":" + pname[5] + "" + pname[3] + ": " + title;
             entry.className = 'audio';
 
             element.appendChild(entry);
