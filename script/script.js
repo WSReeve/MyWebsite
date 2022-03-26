@@ -31,10 +31,12 @@ async function populatePage(csvfile) {
     dataMat.forEach(async month => {
         const parent = document.querySelector("ol");
         await createList(month, parent);
+        console.log(month.length);
+        console.log(month[0] + month[1]);
         for (i = 2; i < month.length; i++) {
             const file = month[i];
             await createHTML(csvfile, file, month);
-            console.log('add file here');
+            console.log('accounted for ' + file);
         }
         console.log('populated');   
     });

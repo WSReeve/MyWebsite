@@ -16,6 +16,8 @@ def read_files(path, csv_name,rev):
                 file_list.sort(reverse=rev)
                 filewriter.writerow([year, month] + file_list)
                 #print([year, month] + file_list)
+                print(file_list)
+
 
 
 read_files("assets/art", 'art_filenames.csv',True)
