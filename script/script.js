@@ -107,6 +107,8 @@ async function createHTML(csvfile, column, row) {
             element.class = "entry";
         
             entry = document.createElement("a");
+            entry.target = "_blank";
+            entry.rel = "noopener noreferrer";
             entry.href = "assets/music/" + row[0] + "/" + row[1] + "/" + column;
             entry.innerText = pname[0] + "/" + pname[1] + "/" + pname[2] + " " + pname[4] + ":" + pname[5] + "" + pname[3] + ": " + title;
             entry.className = 'audio';
